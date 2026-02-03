@@ -33,6 +33,11 @@ const App: React.FC = () => {
     }
   }, []);
 
+  // Rola para o topo sempre que mudar de pergunta
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentQuestionIdx, state]);
+
   const startQuiz = () => {
     if (!userName.trim()) {
       alert("Por favor, insira seu nome para começar.");

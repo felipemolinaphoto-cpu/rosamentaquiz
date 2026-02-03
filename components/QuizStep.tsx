@@ -53,24 +53,24 @@ const QuizStep: React.FC<QuizStepProps> = ({
                 : 'hover:shadow-lg hover:-translate-y-1'
                 }`}
             >
-              <img
-                src={option.imageUrl}
-                alt={option.label}
-                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ${isSelected ? 'scale-110' : 'group-hover:scale-110'
-                  }`}
-                style={{ objectPosition: option.imagePosition || 'center' }}
-              />
-              <div className={`absolute inset-0 bg-gradient-to-t via-black/40 to-transparent transition-opacity duration-300 ${isSelected ? 'from-mainPink/90 opacity-100' : 'from-black/90 opacity-100'
-                }`}></div>
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden mb-4">
+                <img
+                  src={option.imageUrl}
+                  alt={option.label}
+                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ${isSelected ? 'scale-110' : 'group-hover:scale-110'
+                    }`}
+                  style={{ objectPosition: option.imagePosition || 'center' }}
+                />
+              </div>
 
-              <div className="absolute bottom-0 left-0 p-8 w-full z-10">
+              <div className="px-2 w-full">
                 <div className="flex items-center justify-between mb-2">
-                  <span className={`text-sm uppercase tracking-[0.2em] font-bold drop-shadow-md ${isSelected ? 'text-white' : 'text-white/90'
+                  <span className={`text-sm uppercase tracking-[0.2em] font-bold ${isSelected ? 'text-mainPink' : 'text-black'
                     }`}>
                     {option.label}
                   </span>
                   {isSelected && (
-                    <div className="bg-white text-mainPink rounded-full w-6 h-6 flex items-center justify-center shadow-sm">
+                    <div className="bg-mainPink text-white rounded-full w-6 h-6 flex items-center justify-center shadow-sm">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -78,7 +78,7 @@ const QuizStep: React.FC<QuizStepProps> = ({
                   )}
                 </div>
                 {isSelected && (
-                  <p className="text-[10px] text-white/90 leading-relaxed font-light animate-fade-in">
+                  <p className="text-[10px] text-gray-600 leading-relaxed font-light animate-fade-in line-clamp-3">
                     {option.styleProfile}
                   </p>
                 )}
