@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/freepik/:path*",
+            "destination": "https://api.freepik.com/:path*"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}
