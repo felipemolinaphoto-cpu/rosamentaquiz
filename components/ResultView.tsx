@@ -20,6 +20,35 @@ const ResultView: React.FC<ResultViewProps> = ({ result, userName, answersLabels
 
   // Função principal para gerar o PDF e compartilhar
   const handleShareResult = async (downloadOnly = false) => {
+    // SE NÃO FOR DOWNLOAD, É O FLUXO DE WHATSAPP + EMAIL
+    if (!downloadOnly) {
+      if (!isSent) {
+        // 1. Envio Automático do E-mail (Webhook) em Background
+        import('../services/notifications').then(({ sendQuizResultEmail }) => {
+          sendQuizResultEmail({
+            userName,
+            result,
+            answers: answersLabels,
+            date: new Date().toLocaleDateString('pt-BR')
+          });
+        });
+      }
+
+      // 2. Compartilhamento WhatsApp (Mobile / Desktop)
+      // Ação 1: Enviar mensagem específica para WhatsApp
+      const phone = "5521979386051";
+      const text = "Oi, respondi o quiz!";
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+      // Abre o WhatsApp
+      window.open(url, '_blank');
+
+      onSendReport(result);
+      setIsSent(true);
+      return;
+    }
+
+    // --- ABAIXO SÓ EXECUTA SE FOR downloadOnly = true ---
     if (!resultRef.current) return;
     setIsGenerating(true);
 
@@ -44,42 +73,12 @@ const ResultView: React.FC<ResultViewProps> = ({ result, userName, answersLabels
       });
       pdf.addImage(imgData, 'PNG', 0, 0, canvas.width / 2, canvas.height / 2);
 
-      const pdfBlob = pdf.output('blob');
-      const pdfFile = new File([pdfBlob], `Estilo_RosaMenta_${userName.replace(/\s+/g, '_')}.pdf`, { type: 'application/pdf' });
+      // Salvar arquivo
+      pdf.save(`Rosa_Menta_${userName.replace(/\s+/g, '_')}.pdf`);
 
-      // Se for apenas DOWNLOAD
-      if (downloadOnly) {
-        pdf.save(`Rosa_Menta_${userName.replace(/\s+/g, '_')}.pdf`);
-        setIsGenerating(false);
-        return;
-      }
-
-      // 3. Compartilhamento Nativo (Mobile / WhatsApp Desktop App)
-      // Se o navegador suportar o envio de arquivos (maioria dos celulares modernos)
-      if (navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
-        await navigator.share({
-          files: [pdfFile],
-          title: 'Meu Estilo Rosa Menta',
-          text: `✨ Olá! Fiz o quiz da Rosa Menta. Meu estilo é: *${result.profileName}*. Segue o PDF com os detalhes!`,
-        });
-      } else {
-        // Fallback: Se não puder compartilhar o arquivo direto (ex: Chrome no PC sem app instalado)
-        // Dispara o WhatsApp Web tradicional com o texto e instrução de anexo
-        const phone = "5521979386051";
-        const answersList = answersLabels.map((label, index) => `${index + 1}. ${label}`).join('\n');
-        const text = `✨ *Resultado Quiz Rosa Menta* ✨\n\nOlá! Sou *${userName}* e meu estilo é *${result.profileName}*.\n\n📝 *Minhas Escolhas:* \n${answersList}\n\n📖 *Análise:* ${result.analysisText.replace(/\[|\]/g, '*')}`;
-        const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-        window.open(url, '_blank');
-
-        // Avisa o usuário para baixar se o share falhar (fallback manual)
-        // Mas como agora temos botão de download, podemos focar só no zap
-      }
-
-      onSendReport(result);
-      setIsSent(true);
     } catch (err) {
-      console.error("Erro no compartilhamento:", err);
-      alert("Houve um erro ao gerar o resultado. Tente novamente.");
+      console.error("Erro no download:", err);
+      alert("Houve um erro ao gerar o PDF. Tente novamente.");
     } finally {
       setIsGenerating(false);
     }
@@ -169,7 +168,7 @@ const ResultView: React.FC<ResultViewProps> = ({ result, userName, answersLabels
 
             <div className="mt-12 space-y-4 no-pdf">
               <button
-                onClick={handleShareResult}
+                onClick={() => handleShareResult(false)}
                 disabled={isGenerating}
                 className="w-full py-4 px-8 rounded-full text-xs tracking-[0.2em] uppercase transition-all font-bold shadow-xl flex items-center justify-center gap-3 text-white hover:scale-[1.02] active:scale-95 text-center group disabled:opacity-50"
                 style={{ backgroundColor: COLORS.mintGreen }}

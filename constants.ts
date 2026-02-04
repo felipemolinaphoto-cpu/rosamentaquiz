@@ -75,11 +75,11 @@ export const QUESTIONS: Question[] = [
     title: "6. Hobby Caseiro: O que você mais gosta de fazer em casa?",
     multiselect: true,
     options: [
-      { id: '6a', label: 'Ler', imageUrl: '/images/creation_2301882413.jpg', styleProfile: 'Leitura, estantes, poltrona, iluminação focada, silêncio', imagePosition: 'center 70%', visualPrompt: 'a simple loose pencil sketch of an open book drawn on a small piece of white paper' },
-      { id: '6b', label: 'Ver Séries/Filmes', imageUrl: '/images/creation_2301884751.jpg', styleProfile: 'Cinema em casa, sofá retrátil, blackout, imersão, conforto', visualPrompt: 'a simple loose pencil sketch of a tv screen drawn on a small piece of white paper' },
-      { id: '6c', label: 'Cozinhar', imageUrl: '/images/creation_2301886747.jpg', styleProfile: 'Gourmet, receber, prático, equipamentos, convivência', visualPrompt: 'a simple loose pencil sketch of a chef hat drawn on a small piece of white paper' },
-      { id: '6d', label: 'Jogos de Tabuleiro', imageUrl: '/images/creation_2301899189.jpg', styleProfile: 'Jogos, mesa grande, social, diversão, conforto', visualPrompt: 'a simple loose pencil sketch of a dice drawn on a small piece of white paper' },
-      { id: '6e', label: 'Artesanato', imageUrl: '/images/creation_2301901835.jpg', styleProfile: 'Ateliê, manual, criativo, organização, bancada', visualPrompt: 'a simple loose pencil sketch of a scissor drawn on a small piece of white paper' }
+      { id: '6a', label: 'Ler', imageUrl: '/images/6.1.jpg', styleProfile: 'Leitura, estantes, poltrona, iluminação focada, silêncio', imagePosition: 'center 70%', visualPrompt: 'a simple loose pencil sketch of an open book drawn on a small piece of white paper' },
+      { id: '6b', label: 'Ver Séries/Filmes', imageUrl: '/images/6.2.jpg', styleProfile: 'Cinema em casa, sofá retrátil, blackout, imersão, conforto', visualPrompt: 'a simple loose pencil sketch of a tv screen drawn on a small piece of white paper' },
+      { id: '6c', label: 'Cozinhar', imageUrl: '/images/6.3.jpg', styleProfile: 'Gourmet, receber, prático, equipamentos, convivência', visualPrompt: 'a simple loose pencil sketch of a chef hat drawn on a small piece of white paper' },
+      { id: '6d', label: 'Jogos de Tabuleiro', imageUrl: '/images/6.4.jpg', styleProfile: 'Jogos, mesa grande, social, diversão, conforto', visualPrompt: 'a simple loose pencil sketch of a dice drawn on a small piece of white paper' },
+      { id: '6e', label: 'Artesanato', imageUrl: '/images/6.5.jpg', styleProfile: 'Ateliê, manual, criativo, organização, bancada', visualPrompt: 'a simple loose pencil sketch of a scissor drawn on a small piece of white paper' }
     ]
   },
   {
@@ -87,10 +87,10 @@ export const QUESTIONS: Question[] = [
     title: "7. O Detalhe Afetivo: O que não pode faltar na decoração?",
     multiselect: true,
     options: [
-      { id: '7a', label: 'Plantas (Urban Jungle)', imageUrl: '/images/creation_2301935942.jpg', styleProfile: 'Biofilia, natureza, frescor, vida, verde', visualPrompt: 'a polaroid photo of lush green plants' },
-      { id: '7b', label: 'Instrumento Musical', imageUrl: '/images/creation_2301938207.jpg', styleProfile: 'Música, hobby, arte, sensibilidade, acústica', visualPrompt: 'a polaroid photo of a musical instrument' },
-      { id: '7c', label: 'Galeria de Arte/Fotos', imageUrl: '/images/creation_2301944238.jpg', styleProfile: 'Memórias, curadoria, pessoal, história, quadros', visualPrompt: 'a polaroid photo of framed art on a wall' },
-      { id: '7d', label: 'Móveis com História', imageUrl: '/images/creation_2301946984.jpg', styleProfile: 'Herança, vintage, madeira, nostalgia, relíquia', visualPrompt: 'a polaroid photo of an antique vintage furniture piece' }
+      { id: '7a', label: 'Plantas (Urban Jungle)', imageUrl: '/images/7.1.jpg', styleProfile: 'Biofilia, natureza, frescor, vida, verde', visualPrompt: 'a polaroid photo of lush green plants' },
+      { id: '7b', label: 'Instrumento Musical', imageUrl: '/images/7.2.jpg', styleProfile: 'Música, hobby, arte, sensibilidade, acústica', visualPrompt: 'a polaroid photo of a musical instrument' },
+      { id: '7c', label: 'Galeria de Arte/Fotos', imageUrl: '/images/7.3.jpg', styleProfile: 'Memórias, curadoria, pessoal, história, quadros', visualPrompt: 'a polaroid photo of framed art on a wall' },
+      { id: '7d', label: 'Móveis com História', imageUrl: '/images/7.4.jpg', styleProfile: 'Herança, vintage, madeira, nostalgia, relíquia', visualPrompt: 'a polaroid photo of an antique vintage furniture piece' }
     ]
   }
 ];

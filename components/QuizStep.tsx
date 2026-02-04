@@ -48,7 +48,7 @@ const QuizStep: React.FC<QuizStepProps> = ({
             <button
               key={option.id}
               onClick={() => onToggle(option)}
-              className={`group relative aspect-[4/3] rounded-[2rem] overflow-hidden text-left transition-all duration-300 ${isSelected
+              className={`group relative h-auto rounded-[2rem] overflow-hidden text-left transition-all duration-300 ${isSelected
                 ? 'ring-4 ring-mainPink shadow-xl scale-[1.02]'
                 : 'hover:shadow-lg hover:-translate-y-1'
                 }`}
